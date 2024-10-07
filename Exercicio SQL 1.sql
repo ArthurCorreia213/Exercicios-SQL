@@ -21,7 +21,7 @@ USE ContosoRetailDW
 --DESAFIO 3-A
 --SELECT TOP(100)
 --FirstName AS Nome, 
---EmailAddress AS Sobrenome,
+--EmailAddress AS Email,
 --BirthDate AS 'Data de nascimento'
 --FROM DimCustomer
 
