@@ -1,11 +1,11 @@
+USE ContosoRetailDW
+
 --Exercicio 1
 SELECT
-SUM(SalesQuantity) AS 'QTD. Vendida'
+	SUM(SalesQuantity) AS 'QTD. Vendida',
+	SUM(ReturnQuantity) AS 'QTD. Devolvida'
 FROM FactSales
-
-SELECT
-SUM(ReturnQuantity) AS 'QTD. Devolvida'
-FROM FactSales
+WHERE ChannelKey = 1
 
 --Exercicio 2
 SELECT 
@@ -30,12 +30,12 @@ WHERE EmployeeCount = (SELECT MIN(EmployeeCount) FROM DimStore)
 SELECT
 	COUNT(EmployeeKey) AS 'Numero de Funcionarios homens'
 FROM DimEmployee
-WHERE Gender = 'M' AND EndDate IS NULL
+WHERE Gender = 'M'
 
 SELECT
 	COUNT(EmployeeKey) AS 'Numero de Funcionarias mulheres'
 FROM DimEmployee
-WHERE Gender = 'F'  AND EndDate IS NULL 
+WHERE Gender = 'F' 
 
 --Funcionário mais antigo
 SELECT 
@@ -48,7 +48,7 @@ WHERE HireDate =
 	(
 	SELECT MIN(HireDate) 
 	FROM DimEmployee 
-	WHERE Gender = 'M' AND EndDate IS NULL
+	WHERE Gender = 'M'
 	)
 
 --SELECT TOP(1)
@@ -71,18 +71,12 @@ WHERE HireDate =
 	(
 	SELECT MIN(HireDate) 
 	FROM DimEmployee 
-	WHERE Gender = 'F' AND EndDate IS NULL
+	WHERE Gender = 'F'
 	)
 
 --Exercicio 5
 SELECT
-	COUNT(DISTINCT ColorName) AS 'Cores unicas'
-FROM DimProduct
-
-SELECT
-	COUNT(DISTINCT BrandName) AS 'Marcas unicas'
-FROM DimProduct
-
-SELECT
+	COUNT(DISTINCT ColorName) AS 'Cores unicas',
+	COUNT(DISTINCT BrandName) AS 'Marcas unicas',
 	COUNT(DISTINCT ClassName) AS 'Classes unicas'
 FROM DimProduct
