@@ -14,7 +14,6 @@ SELECT
 	SUM(ReturnQuantity) AS 'Total de devoluções'
 FROM FactSales
 Group BY StoreKey
-ORDER BY StoreKey ASC
 
 --Exercicio 1-C
 SELECT
@@ -117,11 +116,7 @@ GROUP BY DepartmentName
 --Exercicio 10
 SELECT
 	Title,
-	AVG(VacationHours) AS 'Media de horas de folga'
+	SUM(VacationHours) AS 'Media de horas de folga'
 FROM DimEmployee
-WHERE EndDate IS NULL AND Gender = 'F' AND DepartmentName IN('Production', 'Marketing', 'Engineering', 'Finance')  AND HireDate LIKE '2000%' OR EndDate IS NULL AND Gender = 'F' AND DepartmentName IN('Production', 'Marketing', 'Engineering', 'Finance')  AND HireDate LIKE '1999%'
+WHERE EndDate IS NULL AND Gender = 'F' AND DepartmentName IN('Production', 'Marketing', 'Engineering', 'Finance')  AND HireDate BETWEEN '1999-01-01' AND '2000-12-31'
 GROUP BY Title
-
-SELECT *
-FROM DimEmployee
-WHERE Gender = 'F' AND DepartmentName IN('Production', 'Marketing', 'Engineering', 'Finance')
